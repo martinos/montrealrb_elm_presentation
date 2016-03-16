@@ -6,14 +6,14 @@ import StartApp.Simple
 import ViewHelper exposing (..)
 
 
-initialModel =
-  [ "Ann", "Bob" ]
+model =
+  [ "John", "Ann" ]
     |> update (Add "Jose")
-    |> update (Add "Martin")
+    |> update (Add "Alice")
 
 
 main =
-  StartApp.Simple.start { model = initialModel, update = update, view = view }
+  StartApp.Simple.start { model = model, update = update, view = view }
 
 
 type Action
@@ -27,24 +27,19 @@ update action model =
       (user :: model)
 
     Pop ->
-      model |> List.tail |> Maybe.withDefault [ "undefined is not a function" ]
+      model |> List.tail |> Maybe.withDefault [ "undefined function for nil class" ]
 
 
-view appAddress model =
+view appAddress users =
   div
     []
-    [ label
-        []
-        [ text "Name"
-        , input [ onChange appAddress Add ] []
-        , button [ onClick appAddress Pop ] [ text "Pop" ]
-        ]
+    [ input [ onChange appAddress Add ] []
+    , button [ onClick appAddress Pop ] [ text "Pop" ]
     , ul
         []
-        (model |> List.map userHtml)
+        (users |> List.map userView)
     ]
 
 
-userHtml : String -> Html
-userHtml user =
+userView user =
   li [] [ text user ]

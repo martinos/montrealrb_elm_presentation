@@ -7,6 +7,9 @@ output: slideshow.html
 # Elm
 
 ## FP in your browser
+Martin Chabot
+
+@martinosis
 
 --
 
@@ -104,6 +107,8 @@ This has led to innumerable errors, vulnerabilities, and system crashes, which h
 
 ---
 
+### [Time Travelling Debugger](http://debug.elm-lang.org/edit/Mario.elm)
+---
 ## Elm basics
 
 ---
@@ -136,6 +141,9 @@ add a b = a + b
 ```
 add: number -> number -> number
 add a b = a + b
+
+add 2 3 
+=> 5
 
 (add 2)
 => <function> : number -> number
@@ -175,28 +183,6 @@ Ruby equivalent
 ```
 add = -> (a, b) { a + b }
 ```
-
----
-### Fonction composition
-
-```
-move : (Float, Float) -> Form -> Form
-rotate : Float -> Form -> Form
-```
-```
-zoom =  move (10, 30) >> scale 2.5
-=> <function> : Form -> Form
-
-zoom form = scale 2.5 (move (10, 30) form)
-```
-
----
-```
-forms |> List.map (move (10, 30) >> rotate (degrees 45))
-```
-```
-forms |> List.map (\form -> (rotate 2.3 (move (10, 30) form)))
-```
 ---
 
 ## Basic Types
@@ -216,13 +202,14 @@ Access
 
 ```
 john.age
-=> 33 : number
+=> 33 
 ```
 ---
 #### Transforming a record
 
 ```
 bob = { john | name = "Bob" }
+=> { name = "Bob", age = 33 }
 ```
 
 ---
@@ -236,15 +223,13 @@ type Bool = True | False
 ```
 type Maybe a = Just a | Nothing
 ```
-
 ```
-fetch: Maybe Int 
-fetch =
-  Just "12"
+type Maybe Int = Just Int | Nothing
 ```
 --- 
 
 ### List
+
 Creating a list
 
 ```
@@ -257,63 +242,6 @@ Adding an element to a list
 myList = (0::[1,2,3])
 => [0,1,2,3] : List number
 ```
---
-
-Extracting an element from a list
-
-```
-count = head []
-=> Nothing : Maybe a
-
-validCount =  head [2,3]
-=> Just 2 : Maybe number
-```
---- 
-
-```
-> validCount + 2
-
-The left argument of (+) is causing a type mismatch.
-
-4│   validCount + 2
-     ^^^^^^^^^^
-     (+) is expecting the left argument to be a:
-
-         number
-
-         But the left argument is:
-
-             Maybe number
-```
----
-```
-head : List a -> Maybe a
-head list =
-  case list of
-    [] -> Nothing
-    (x :: rest) -> Just x
-```
-
-
----
-
-How to extract data from a Maybe
-
-```
-withDefault : a -> Maybe a -> a
-```
-
-```
-["Joe","Bob","John"] |> head |> withDefault "" 
-=> "Joe"
-[] |> head |> withDefault "" 
-=> ""
-```
-
-```
-["Joe","Bob","John"].first || ""
-```
-
 ---
 
 
@@ -322,7 +250,6 @@ withDefault : a -> Maybe a -> a
 - Inline Documentation
 - [Live Reload](https://github.com/avh4/elm-format)
 - [Elm-format](https://github.com/avh4/elm-format)
-- [Time Travelling Debugger](http://debug.elm-lang.org/edit/Mario.elm)
 - [Repl](https://github.com/elm-lang/elm-repl)
 - [Package Manager](https://github.com/elm-lang/elm-package#version-rules)
 ---
@@ -386,10 +313,30 @@ From 1.2.1 to 1.3.1: Functions were added
 
 ### Conclusion
 
-- No runtime errors
 - Great error messages
-- Nice introduction to functionnal programming concepts
+- No runtime errors
+- Fast develompent feedback 
 
 ---
 
-### Questions
+### References
+
+#### Learning 
+
+```
+- Elm official site
+  http://elm-lang.org/
+- Mike Clark's "Elm: Building Reactive Web Apps" screen cast
+  https://pragmaticstudio.com/elm
+```
+
+#### Talks
+
+```
+- React.js Conf 2016 Rethinking All Practices: Building Applications in Elm
+  - Jamison Dance - 
+  https://www.youtube.com/watch?v=txxKx_I39a8
+- Effects as Data
+  - Richard Feldman
+  https://www.youtube.com/watch?v=6EdXaWfoslc
+```

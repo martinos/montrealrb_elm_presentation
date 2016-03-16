@@ -702,6 +702,8 @@ code {
         <section>
     <h1 id="elm">Elm</h1>
 <h2 id="fp-in-your-browser">FP in your browser</h2>
+<p>Martin Chabot</p>
+<p>@martinosis</p>
 
   </section>
   <section>
@@ -798,6 +800,10 @@ This has led to innumerable errors, vulnerabilities, and system crashes, which h
 
   </section>
   <section>
+    <h3 id="-time-travelling-debugger-http-debug-elm-lang-org-edit-mario-elm-"><a href="http://debug.elm-lang.org/edit/Mario.elm">Time Travelling Debugger</a></h3>
+
+  </section>
+  <section>
     <h2 id="elm-basics">Elm basics</h2>
 
   </section>
@@ -820,6 +826,9 @@ add a b = a + b</code></pre>
     <h3 id="partial-function-application">Partial Function Application</h3>
 <pre><code>add: number -&gt; number -&gt; number
 add a b = a + b
+
+add 2 3 
+=&gt; 5
 
 (add 2)
 =&gt; &lt;function&gt; : number -&gt; number
@@ -845,21 +854,6 @@ add a b = a + b
 
   </section>
   <section>
-    <h3 id="fonction-composition">Fonction composition</h3>
-<pre><code>move : (Float, Float) -&gt; Form -&gt; Form
-rotate : Float -&gt; Form -&gt; Form</code></pre>
-<pre><code>zoom =  move (10, 30) &gt;&gt; scale 2.5
-=&gt; &lt;function&gt; : Form -&gt; Form
-
-zoom form = scale 2.5 (move (10, 30) form)</code></pre>
-
-  </section>
-  <section>
-    <pre><code>forms |&gt; List.map (move (10, 30) &gt;&gt; rotate (degrees 45))</code></pre>
-<pre><code>forms |&gt; List.map (\form -&gt; (rotate 2.3 (move (10, 30) form)))</code></pre>
-
-  </section>
-  <section>
     <h2 id="basic-types">Basic Types</h2>
 
   </section>
@@ -869,21 +863,20 @@ zoom form = scale 2.5 (move (10, 30) form)</code></pre>
 <pre><code>john = {name = &quot;John&quot;, age = 33}</code></pre>
 <p>Access</p>
 <pre><code>john.age
-=&gt; 33 : number</code></pre>
+=&gt; 33</code></pre>
 
   </section>
   <section>
     <h4 id="transforming-a-record">Transforming a record</h4>
-<pre><code>bob = { john | name = &quot;Bob&quot; }</code></pre>
+<pre><code>bob = { john | name = &quot;Bob&quot; }
+=&gt; { name = &quot;Bob&quot;, age = 33 }</code></pre>
 
   </section>
   <section>
     <h4 id="tagged-union">Tagged Union</h4>
 <pre><code>type Bool = True | False</code></pre>
 <pre><code>type Maybe a = Just a | Nothing</code></pre>
-<pre><code>fetch: Maybe Int 
-fetch =
-  Just &quot;12&quot;</code></pre>
+<pre><code>type Maybe Int = Just Int | Nothing</code></pre>
 
   </section>
   <section>
@@ -896,55 +889,11 @@ fetch =
 
   </section>
   <section>
-    <p>Extracting an element from a list</p>
-<pre><code>count = head []
-=&gt; Nothing : Maybe a
-
-validCount =  head [2,3]
-=&gt; Just 2 : Maybe number</code></pre>
-
-  </section>
-  <section>
-    <pre><code>&gt; validCount + 2
-
-The left argument of (+) is causing a type mismatch.
-
-4│   validCount + 2
-     ^^^^^^^^^^
-     (+) is expecting the left argument to be a:
-
-         number
-
-         But the left argument is:
-
-             Maybe number</code></pre>
-
-  </section>
-  <section>
-    <pre><code>head : List a -&gt; Maybe a
-head list =
-  case list of
-    [] -&gt; Nothing
-    (x :: rest) -&gt; Just x</code></pre>
-
-  </section>
-  <section>
-    <p>How to extract data from a Maybe</p>
-<pre><code>withDefault : a -&gt; Maybe a -&gt; a</code></pre>
-<pre><code>[&quot;Joe&quot;,&quot;Bob&quot;,&quot;John&quot;] |&gt; head |&gt; withDefault &quot;&quot; 
-=&gt; &quot;Joe&quot;
-[] |&gt; head |&gt; withDefault &quot;&quot; 
-=&gt; &quot;&quot;</code></pre>
-<pre><code>[&quot;Joe&quot;,&quot;Bob&quot;,&quot;John&quot;].first || &quot;&quot;</code></pre>
-
-  </section>
-  <section>
     <h3 id="tooling">Tooling</h3>
 <ul>
 <li>Inline Documentation</li>
 <li><a href="https://github.com/avh4/elm-format">Live Reload</a></li>
 <li><a href="https://github.com/avh4/elm-format">Elm-format</a></li>
-<li><a href="http://debug.elm-lang.org/edit/Mario.elm">Time Travelling Debugger</a></li>
 <li><a href="https://github.com/elm-lang/elm-repl">Repl</a></li>
 <li><a href="https://github.com/elm-lang/elm-package#version-rules">Package Manager</a></li>
 </ul>
@@ -999,14 +948,26 @@ MAJOR - existing functions have been changed or removed</code></pre>
   <section>
     <h3 id="conclusion">Conclusion</h3>
 <ul>
-<li>No runtime errors</li>
 <li>Great error messages</li>
-<li>Nice introduction to functionnal programming concepts</li>
+<li>No runtime errors</li>
+<li>Fast develompent feedback</li>
 </ul>
 
   </section>
   <section>
-    <h3 id="questions">Questions</h3>
+    <h3 id="references">References</h3>
+<h4 id="learning">Learning</h4>
+<pre><code>- Elm official site
+  http://elm-lang.org/
+- Mike Clark&#39;s &quot;Elm: Building Reactive Web Apps&quot; screen cast
+  https://pragmaticstudio.com/elm</code></pre>
+<h4 id="talks">Talks</h4>
+<pre><code>- React.js Conf 2016 Rethinking All Practices: Building Applications in Elm
+  - Jamison Dance - 
+  https://www.youtube.com/watch?v=txxKx_I39a8
+- Effects as Data
+  - Richard Feldman
+  https://www.youtube.com/watch?v=6EdXaWfoslc</code></pre>
 
   </section>
 
