@@ -308,6 +308,9 @@ From 1.2.1 to 1.3.1: Functions were added
 
 ### Let see some of these tools in action
 
+Here is small silent video what I have presented. I did the program only in my editor using only the compiler to guide me, without live reload.
+
+https://asciinema.org/a/1zzhuxo2hn50tvgqnqx8orgbt
 
 ---
 
