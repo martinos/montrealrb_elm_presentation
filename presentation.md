@@ -318,7 +318,7 @@ https://asciinema.org/a/1zzhuxo2hn50tvgqnqx8orgbt
 
 - Great error messages
 - No runtime errors
-- Fast develompent feedback 
+- Fast development feedback 
 
 ---
 
