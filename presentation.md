@@ -51,7 +51,7 @@ Martin Chabot
 
 ### Elm is For creating web browser-based application
 - Elm transpiles to Javascript
-- In runs in the browser
+- It runs in the browser
 ---
 
 ### Elm is a pure functional language
@@ -86,7 +86,7 @@ user.save
 
 ### Elm is Statically Typed 
 
-Types are infered
+Types are inferred
 
 ---
 ### NULL  does not exist
@@ -306,7 +306,7 @@ From 1.2.1 to 1.3.1: Functions were added
 ```
 ---
 
-### Let see some of these tools in action
+### Let's see some of these tools in action
 
 Here is small silent video what I have presented. I did the program only in my editor using only the compiler to guide me, without live reload.
 
