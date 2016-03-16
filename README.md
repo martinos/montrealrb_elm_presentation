@@ -1,7 +1,8 @@
 # Elm, Functionnal programming in your browser 
 
-To autobuild the presentation.md file
+To autobuild the presentation on change
 
     fswatch -o presentation.md | while read file; do cleaver presentation.md;done 
 
-# You can see the presentation
+
+You view the presentation [here](https://cdn.rawgit.com/martinos/montrealrb_elm_presentation/master/slideshow.html)
