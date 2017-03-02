@@ -1,4 +1,4 @@
-# Elm, Functionnal programming in your browser 
+# Elm, Functional programming in your browser 
 
 To autobuild the presentation on change
 
